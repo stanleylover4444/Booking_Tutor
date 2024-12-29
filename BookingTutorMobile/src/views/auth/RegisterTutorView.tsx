@@ -12,7 +12,7 @@ import {useNavigation} from '@react-navigation/native';
 import {defaultField} from '../../utils/formUtils';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import GlobalModalController from '../components/GlobalModal/GlobalModalController';
-import {parseError} from '../../utils/errorUtils';
+// import {parseError} from '../../utils/errorUtils';
 import {Colors} from '../../styles/Colors';
 import LoadingView from '../components/LoadingView';
 import Selection from '../components/Selection';
@@ -109,7 +109,7 @@ const RegisterTutorView = () => {
             setLoading(false);
             GlobalModalController.showModal({
               title: 'Đăng ký thất bại',
-              description: parseError(error).message,
+              // description: parseError(error).message,
               icon: 'fail',
             });
           });

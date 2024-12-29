@@ -4,6 +4,8 @@
     "lib": ["es6", "dom"],
     "allowJs": true,
     "jsx": "react-native",
+    "typeRoots": ["./node_modules/@types", "./@types"],
+    "types": ["react", "react-native"], 
     "moduleResolution": "node",
     "esModuleInterop": true,
     "skipLibCheck": true,
