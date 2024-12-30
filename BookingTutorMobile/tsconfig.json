@@ -4,7 +4,7 @@
     "lib": ["es6", "dom"],
     "allowJs": true,
     "jsx": "react-native",
-    "typeRoots": ["./node_modules/@types", "./@types"],
+    // "typeRoots": ["./node_modules/@types", "./@types"],
     "types": ["react", "react-native"], 
     "moduleResolution": "node",
     "esModuleInterop": true,
@@ -16,3 +16,21 @@
   "include": ["src/**/*", "index.js", "App.js"],
   "exclude": ["node_modules"]
 }
+
+// {
+//   "compilerOptions": {
+//     "target": "es5",
+//     "lib": ["es6", "dom"],
+//     "allowJs": true,
+//     "jsx": "react-native",
+//     "moduleResolution": "node",
+//     "esModuleInterop": true,
+//     "skipLibCheck": true,
+//     "strict": true,
+//     "noEmit": true,
+//     "forceConsistentCasingInFileNames": true
+//   },
+//   "include": ["src/**/*", "index.js", "App.js"],
+//   "exclude": ["node_modules"]
+// }
+

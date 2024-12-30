@@ -56,6 +56,10 @@ const LoginView = () => {
     navigation.navigate('ChooseRoleView' as never);
   };
 
+  const handlePressLogin = () => {
+    navigation.navigate('BottomTab' as never);
+  };
+
   return (
     <SafeAreaView style={DefaultStyles.container}>
       <Header
@@ -121,7 +125,7 @@ const LoginView = () => {
           <Spacer height={20} />
           <View style={{alignItems: 'center'}}></View>
           <Spacer height={20} />
-          <Button isColor title={'Đăng nhập'} />
+          <Button onPress={handlePressLogin} isColor title={'Đăng nhập'} />
           <View style={{flex: 1}}></View>
           <View style={{alignItems: 'center'}}>
             <Text style={DefaultStyles.textRegular14Black}>

@@ -31,14 +31,16 @@ import {
   ic_profile,
   ic_profile_black,
 } from '../assets';
+import { BottomTabDescriptorMap, BottomTabNavigationEventMap } from '@react-navigation/bottom-tabs/lib/typescript/commonjs/src/types';
+import ForumView from '../views/forum/ForumView';
 
-// interface TabBar {
-//   state: TabNavigationState<ParamListBase>;
-//   descriptors: BottomTabDescriptorMap;
-//   navigation:
-//     | NavigationHelpers<ParamListBase, BottomTabNavigationEventMap>
-//     | any;
-// }
+interface TabBar {
+  state: TabNavigationState<ParamListBase>;
+  descriptors: BottomTabDescriptorMap;
+  navigation:
+    | NavigationHelpers<ParamListBase, BottomTabNavigationEventMap>
+    | any;
+}
 
 const getIconAndLabel = (routeName: string) => {
   let label = '';
@@ -75,85 +77,85 @@ const getIconAndLabel = (routeName: string) => {
   return {label, iconDefault, iconActive};
 };
 
-// const MyTabBar: FC<TabBar> = ({state, descriptors, navigation}) => {
-//   return (
-//     <View style={styles.tabBarWrap}>
-//       <View style={[styles.tabBar, styles.tabBarBottom]}>
-//         {state.routes.map((route, index) => {
-//           return (
-//             <View
-//               key={index}
-//               style={[styles.btn, {height: scaleModerate(20)}]}></View>
-//           );
-//         })}
-//       </View>
-//       <View style={styles.tabBar}>
-//         {state.routes.map((route, index) => {
-//           const {options} = descriptors[route.key];
-//           const {label, iconDefault, iconActive} = getIconAndLabel(route.name);
+const MyTabBar: FC<TabBar> = ({state, descriptors, navigation}) => {
+  return (
+    <View style={styles.tabBarWrap}>
+      <View style={[styles.tabBar, styles.tabBarBottom]}>
+        {state.routes.map((route, index) => {
+          return (
+            <View
+              key={index}
+              style={[styles.btn, {height: scaleModerate(20)}]}></View>
+          );
+        })}
+      </View>
+      <View style={styles.tabBar}>
+        {state.routes.map((route, index) => {
+          const {options} = descriptors[route.key];
+          const {label, iconDefault, iconActive} = getIconAndLabel(route.name);
 
-//           const isFocused = state.index === index;
+          const isFocused = state.index === index;
 
-//           const onPress = () => {
-//             const event = navigation.emit({
-//               type: 'tabPress',
-//               target: route.key,
-//               canPreventDefault: true,
-//             });
+          const onPress = () => {
+            const event = navigation.emit({
+              type: 'tabPress',
+              target: route.key,
+              canPreventDefault: true,
+            });
 
-//             if (!isFocused && !event.defaultPrevented) {
-//               navigation.navigate({name: route.name, merge: true});
-//             }
-//           };
+            if (!isFocused && !event.defaultPrevented) {
+              navigation.navigate({name: route.name, merge: true});
+            }
+          };
 
-//           const onLongPress = () => {
-//             navigation.emit({
-//               type: 'tabLongPress',
-//               target: route.key,
-//             });
-//           };
+          const onLongPress = () => {
+            navigation.emit({
+              type: 'tabLongPress',
+              target: route.key,
+            });
+          };
 
-//           return (
-//             <Pressable
-//               key={index}
-//               accessibilityRole="button"
-//               accessibilityState={isFocused ? {selected: true} : {}}
-//               accessibilityLabel={options.tabBarAccessibilityLabel}
-//               testID={options.tabBarTestID}
-//               onPress={onPress}
-//               onLongPress={onLongPress}
-//               style={styles.btn}>
-//               <View style={styles.iconContainer}>
-//                 {isFocused && (
-//                   <>
-//                     <FastImage
-//                       source={iconActive}
-//                       style={styles.iconTab}
-//                       resizeMode={'contain'}
-//                     />
-//                     <Text style={[styles.title, {color: Colors.primary}]}>
-//                       {label}
-//                     </Text>
-//                   </>
-//                 )}
-//                 {!isFocused && (
-//                   <>
-//                     <FastImage
-//                       source={iconDefault}
-//                       style={styles.iconTab}
-//                       resizeMode={'contain'}
-//                     />
-//                     <Text style={styles.title}>{label}</Text>
-//                   </>
-//                 )}
-//               </View>
-//             </Pressable>
-//           );
-//         })}
-//       </View>
-//     </View>
-//   );
-// };
+          return (
+            <Pressable
+              key={index}
+              accessibilityRole="button"
+              accessibilityState={isFocused ? {selected: true} : {}}
+              accessibilityLabel={options.tabBarAccessibilityLabel}
+              testID={options.tabBarTestID}
+              onPress={onPress}
+              onLongPress={onLongPress}
+              style={styles.btn}>
+              <View style={styles.iconContainer}>
+                {isFocused && (
+                  <>
+                    <FastImage
+                      source={iconActive}
+                      style={styles.iconTab}
+                      resizeMode={'contain'}
+                    />
+                    <Text style={[styles.title, {color: Colors.primary}]}>
+                      {label}
+                    </Text>
+                  </>
+                )}
+                {!isFocused && (
+                  <>
+                    <FastImage
+                      source={iconDefault}
+                      style={styles.iconTab}
+                      resizeMode={'contain'}
+                    />
+                    <Text style={styles.title}>{label}</Text>
+                  </>
+                )}
+              </View>
+            </Pressable>
+          );
+        })}
+      </View>
+    </View>
+  );
+};
 
 const HomeStack = createNativeStackNavigator();
 const HomeStackScreen = ({route}: any) => {
@@ -170,6 +172,23 @@ const HomeStackScreen = ({route}: any) => {
     </HomeStack.Navigator>
   );
 };
+
+const ForumStack = createNativeStackNavigator()
+const ForumStackScreen = ({ route }: any) => {
+    return (
+        <ForumStack.Navigator
+            screenOptions={{
+                headerShown: false,
+            }}
+        >
+            <ForumStack.Screen
+                name="ForumView"
+                component={ForumView}
+                initialParams={route?.params}
+            />
+        </ForumStack.Navigator>
+    )
+}
 
 const ProfileStack = createNativeStackNavigator();
 const ProfileStackScreen = ({route}: any) => {
@@ -190,16 +209,16 @@ const ProfileStackScreen = ({route}: any) => {
 const Tab = createBottomTabNavigator();
 const BottomTab = () => {
   return (
-    // <Tab.Navigator
-    //   initialRouteName="HomeTab"
-    //   screenOptions={{
-    //     headerShown: false,
-    //   }}
-    //   tabBar={props => <MyTabBar {...props} />}>
-    //   <Tab.Screen name="HomeTab" component={HomeStackScreen} />
-    //   <Tab.Screen name="ProfileTab" component={ProfileStackScreen} />
-    // </Tab.Navigator>
-    ''
+    <Tab.Navigator
+      initialRouteName="HomeTab"
+      screenOptions={{
+        headerShown: false,
+      }}
+      tabBar={props => <MyTabBar {...props} />}>
+      <Tab.Screen name="HomeTab" component={HomeStackScreen} />
+      <Tab.Screen name="ForumTab" component={ForumStackScreen} />
+      <Tab.Screen name="ProfileTab" component={ProfileStackScreen} />
+    </Tab.Navigator>
   );
 };
 
