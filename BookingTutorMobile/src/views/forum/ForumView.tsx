@@ -16,7 +16,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
 import { Colors } from '../../styles/Colors'
 import { scaleModerate, WIDTH_SCREEN } from '../../styles/scaleDimensions'
-import { GiftedAvatar } from 'react-native-gifted-chat'
+// import { GiftedAvatar } from 'react-native-gifted-chat'
 import FastImage from 'react-native-fast-image'
 import PhotoOptionsPicker from '../components/PhotoOptionsPicker'
 import GenericModal from '../components/Modal'
@@ -325,14 +325,14 @@ const ForumView = () => {
     const renderHeaderUpload: any = () => {
         // return authData?.type === 'lawyer' ? (
             <View style={styles.containerCreatePost}>
-                <GiftedAvatar
+                {/* <GiftedAvatar
                     user={
                         {
                             // avatar: authData?.user?.avatarUrl,
                         } as any
                     }
                     avatarStyle={styles.avataUser}
-                />
+                /> */}
 
                 <TouchableOpacity
                     style={{

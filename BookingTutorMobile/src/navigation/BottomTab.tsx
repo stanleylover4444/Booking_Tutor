@@ -33,6 +33,7 @@ import {
 } from '../assets';
 import { BottomTabDescriptorMap, BottomTabNavigationEventMap } from '@react-navigation/bottom-tabs/lib/typescript/commonjs/src/types';
 import ForumView from '../views/forum/ForumView';
+import MessageView from '../views/chat/MessageView';
 
 interface TabBar {
   state: TabNavigationState<ParamListBase>;
@@ -190,6 +191,23 @@ const ForumStackScreen = ({ route }: any) => {
     )
 }
 
+const MessageStack = createNativeStackNavigator()
+const MessageStackScreen = ({ route }: any) => {
+    return (
+        <MessageStack.Navigator
+            screenOptions={{
+                headerShown: false,
+            }}
+        >
+            <MessageStack.Screen
+                name="MessageView"
+                component={MessageView}
+                initialParams={route?.params}
+            />
+        </MessageStack.Navigator>
+    )
+}
+
 const ProfileStack = createNativeStackNavigator();
 const ProfileStackScreen = ({route}: any) => {
   return (
@@ -217,6 +235,7 @@ const BottomTab = () => {
       tabBar={props => <MyTabBar {...props} />}>
       <Tab.Screen name="HomeTab" component={HomeStackScreen} />
       <Tab.Screen name="ForumTab" component={ForumStackScreen} />
+      <Tab.Screen name="MessageTab" component={MessageStackScreen} />
       <Tab.Screen name="ProfileTab" component={ProfileStackScreen} />
     </Tab.Navigator>
   );
