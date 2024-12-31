@@ -35,6 +35,7 @@ import CommentModal from './components/CommentModal'
 // import { UploadPhoto } from '../../services/uploadServices'
 import EmptyView from '../components/EmptyView'
 import ReportPostModal from './components/ReportPostModal'
+import { FullWindowOverlay } from 'react-native-screens'
 
 
 const ForumView = () => {
@@ -372,7 +373,7 @@ const ForumView = () => {
             edges={['top']}
         >
             <HeaderV2
-                title={'forum'}
+                title="Diễn đàn"
                 rightIcon={ic_bell}
                 onRightButtonPress={handleOpenNotification}
                 type="full"
