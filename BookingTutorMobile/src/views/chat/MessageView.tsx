@@ -8,7 +8,7 @@ import {scaleModerate} from '../../styles/scaleDimensions';
 const MessageView = () => {
   return (
     <SafeAreaView style={DefaultStyles.container}>
-      <HeaderV2 title={'listQuestions'} isBack={true} type="simple" />
+      <HeaderV2 title="Tin nhắn" type="simple" />
       <View style={DefaultStyles.wrapBody}></View>
     </SafeAreaView>
   );

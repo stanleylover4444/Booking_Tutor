@@ -50,27 +50,27 @@ const getIconAndLabel = (routeName: string) => {
 
   switch (routeName) {
     case 'HomeTab':
-      label = 'Home';
+      label = 'Trang chính';
       iconDefault = ic_home;
       iconActive = ic_home_black;
       break;
-    case 'DocumentTab':
-      label = 'document';
-      iconDefault = ic_folder;
-      iconActive = ic_folder_black;
-      break;
+    // case 'DocumentTab':
+    //   label = 'document';
+    //   iconDefault = ic_folder;
+    //   iconActive = ic_folder_black;
+    //   break;
     case 'ForumTab':
-      label = 'forum';
+      label = 'Diễn đàn';
       iconDefault = ic_forum;
       iconActive = ic_forum_black;
       break;
     case 'MessageTab':
-      label = 'message';
+      label = 'Tin nhắn';
       iconDefault = ic_message;
       iconActive = ic_message_black;
       break;
     case 'ProfileTab':
-      label = 'profile';
+      label = 'Cá nhân';
       iconDefault = ic_profile;
       iconActive = ic_profile_black;
       break;

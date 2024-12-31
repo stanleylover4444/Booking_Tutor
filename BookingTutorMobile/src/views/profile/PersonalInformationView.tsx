@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native'
+import { ScrollView, StyleSheet, View } from 'react-native'
 import React, { useRef, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { DefaultStyles } from '../../styles/DefaultStyles'
@@ -22,84 +22,84 @@ const PersonalInformationView = () => {
     const dispatch = useDispatch()
     // const priceBoxRef = useRef<any>()
 
-    const { data: userData } = useSelector((store: any) => store.auth)
-    const user = userData?.user
+    // const { data: userData } = useSelector((store: any) => store.auth)
+    // const user = userData?.user
 
-    const { data: authData } = useSelector((store: any) => store.auth)
-    const { data: setting } = useSelector((store: any) => store.setting)
+    // const { data: authData } = useSelector((store: any) => store.auth)
+    // const { data: setting } = useSelector((store: any) => store.setting)
 
-    const dataSelect = setting?.setting?.expertise
+    // const dataSelect = setting?.setting?.expertise
    
     const gender = [
         { key: '1', name: 'male' },
         { key: '2', name: 'female' },
     ]
 
-    const [form, setForm] = useState<IForm>(() => {
-        const initialForm = {
-            fullName:
-                authData?.type === 'lawyer'
-                    ? { value: user?.fullName || '', error: false, message: '' }
-                    : { value: user?.name || '', error: false, message: '' },
-            phoneNumber:
-                authData?.type === 'lawyer'
-                    ? { value: user?.phoneNumber || '', error: false, message: '' }
-                    : { value: user?.phone || '', error: false, message: '' },
-            email: { value: user?.email || '', error: false, message: '' },
-            dob: {
-                value: user?.dob ? moment(user?.dob).format() : '',
-                error: false,
-                message: '',
-            },
-            gender: { value: user?.gender || '', error: false, message: '' },
-            area: { value: user?.area || '', error: false, message: '' },
-        }
+    // const [form, setForm] = useState<IForm>(() => {
+    //     const initialForm = {
+    //         fullName:
+    //             authData?.type === 'lawyer'
+    //                 ? { value: user?.fullName || '', error: false, message: '' }
+    //                 : { value: user?.name || '', error: false, message: '' },
+    //         phoneNumber:
+    //             authData?.type === 'lawyer'
+    //                 ? { value: user?.phoneNumber || '', error: false, message: '' }
+    //                 : { value: user?.phone || '', error: false, message: '' },
+    //         email: { value: user?.email || '', error: false, message: '' },
+    //         dob: {
+    //             value: user?.dob ? moment(user?.dob).format() : '',
+    //             error: false,
+    //             message: '',
+    //         },
+    //         gender: { value: user?.gender || '', error: false, message: '' },
+    //         area: { value: user?.area || '', error: false, message: '' },
+    //     }
 
-        if (authData?.type === 'lawyer') {
-            return {
-                ...initialForm,
-                experienceYear: { value: user?.experienceYear || '', error: false, message: '' },
-                experienceDescription: {
-                    value: user?.experienceDescription || '',
-                    error: false,
-                    message: '',
-                },
-                educationDescription: {
-                    value: user?.educationDescription || '',
-                    error: false,
-                    message: '',
-                },
-                expertise: { value: user?.expertise, error: false, message: '' },
-            }
-        }
+    //     if (authData?.type === 'lawyer') {
+    //         return {
+    //             ...initialForm,
+    //             experienceYear: { value: user?.experienceYear || '', error: false, message: '' },
+    //             experienceDescription: {
+    //                 value: user?.experienceDescription || '',
+    //                 error: false,
+    //                 message: '',
+    //             },
+    //             educationDescription: {
+    //                 value: user?.educationDescription || '',
+    //                 error: false,
+    //                 message: '',
+    //             },
+    //             expertise: { value: user?.expertise, error: false, message: '' },
+    //         }
+    //     }
 
-        return initialForm
-    })
+    //     return initialForm
+    // })
 
-    const validateData = () => {
-        const errors: any = {}
-        let isValid = true
+    // const validateData = () => {
+    //     const errors: any = {}
+    //     let isValid = true
 
-        if (!form.fullName.value) {
-            errors.fullName = { error: true, message: 'nameRequired' }
-            isValid = false
-        }
+    //     if (!form.fullName.value) {
+    //         errors.fullName = { error: true, message: 'nameRequired' }
+    //         isValid = false
+    //     }
 
-        setForm((prevForm) => ({
-            ...prevForm,
-            fullName: { ...prevForm.fullName, ...errors.fullName },
-        }))
+    //     setForm((prevForm) => ({
+    //         ...prevForm,
+    //         fullName: { ...prevForm.fullName, ...errors.fullName },
+    //     }))
 
-        return isValid
-    }
+    //     return isValid
+    // }
 
-    const handleDateChange = (date: Date) => {
-        const formattedDate = moment(date).format()
-        setForm((prevForm) => ({
-            ...prevForm,
-            dob: { value: formattedDate, error: false, message: '' },
-        }))
-    }
+    // const handleDateChange = (date: Date) => {
+    //     const formattedDate = moment(date).format()
+    //     setForm((prevForm) => ({
+    //         ...prevForm,
+    //         dob: { value: formattedDate, error: false, message: '' },
+    //     }))
+    // }
 
     const handleSave = () => {
         // if (!validateData()) return;
@@ -150,144 +150,145 @@ const PersonalInformationView = () => {
 
     return (
         <SafeAreaView style={DefaultStyles.container}>
-            <HeaderV2 title='personalInformation' isBack={true} type="simple" />
+            <HeaderV2 title='Thông tin tài khoản' isBack={true} type="simple" />
+            <ScrollView>
             <KeyboardAwareScrollView style={DefaultStyles.wrapBody}>
                 <Spacer height={16} />
                 <Input
-                    title={'name'}
-                    value={form?.fullName?.value}
-                    onChangeText={(text) =>
-                        setForm({
-                            ...form,
-                            fullName: { value: text, error: false, message: '' },
-                        })
-                    }
-                    error={form?.fullName?.error}
+                    title={'Tên'}
+                    // value={form?.fullName?.value}
+                    // onChangeText={(text) =>
+                    //     setForm({
+                    //         ...form,
+                    //         fullName: { value: text, error: false, message: '' },
+                    //     })
+                    // }
+                    // error={form?.fullName?.error}
                 />
                 <Spacer height={scaleModerate(16)} />
                 <Input
-                    title={'phoneNumber'}
+                    title={'Số điện thoại'}
                     editable={false}
-                    value={form?.phoneNumber?.value}
-                    onChangeText={(text) =>
-                        setForm({
-                            ...form,
-                            phoneNumber: { value: text, error: false, message: '' },
-                        })
-                    }
-                    error={form?.phoneNumber?.error}
+                    // value={form?.phoneNumber?.value}
+                    // onChangeText={(text) =>
+                    //     setForm({
+                    //         ...form,
+                    //         phoneNumber: { value: text, error: false, message: '' },
+                    //     })
+                    // }
+                    // error={form?.phoneNumber?.error}
                 />
                 <Spacer height={scaleModerate(16)} />
                 <Input
-                    title={'email'}
-                    value={form?.email?.value}
-                    onChangeText={(text) =>
-                        setForm({
-                            ...form,
-                            email: { value: text, error: false, message: '' },
-                        })
-                    }
+                    title={'Gmail'}
+                    // value={form?.email?.value}
+                    // onChangeText={(text) =>
+                    //     setForm({
+                    //         ...form,
+                    //         email: { value: text, error: false, message: '' },
+                    //     })
+                    // }
                 />
 
-                {authData?.type === 'lawyer' && (
-                    <>
+                {/* {authData?.type === 'lawyer' && (
+                    <> */}
                         <Spacer height={scaleModerate(16)} />
                         <Input
-                            title={'experienceYear'}
-                            value={form?.experienceYear?.value}
-                            onChangeText={(text) =>
-                                setForm({
-                                    ...form,
-                                    experienceYear: { value: text, error: false, message: '' },
-                                })
-                            }
+                            title={'Số năm kinh nghiêm'}
+                            // value={form?.experienceYear?.value}
+                            // onChangeText={(text) =>
+                            //     setForm({
+                            //         ...form,
+                            //         experienceYear: { value: text, error: false, message: '' },
+                            //     })
+                            // }
                         />
                         <Spacer height={scaleModerate(16)} />
                         <Input
-                            title={'education'}
-                            value={form?.educationDescription?.value}
-                            onChangeText={(text) =>
-                                setForm({
-                                    ...form,
-                                    educationDescription: {
-                                        value: text,
-                                        error: false,
-                                        message: '',
-                                    },
-                                })
-                            }
+                            title={'Học vấn'}
+                            // value={form?.educationDescription?.value}
+                            // onChangeText={(text) =>
+                            //     setForm({
+                            //         ...form,
+                            //         educationDescription: {
+                            //             value: text,
+                            //             error: false,
+                            //             message: '',
+                            //         },
+                            //     })
+                            // }
                         />
                         <Spacer height={scaleModerate(16)} />
                         <Input
-                            title={'experience'}
-                            value={form?.experienceDescription?.value}
-                            onChangeText={(text) =>
-                                setForm({
-                                    ...form,
-                                    experienceDescription: {
-                                        value: text,
-                                        error: false,
-                                        message: '',
-                                    },
-                                })
-                            }
+                            title={'Kinh nghiệm'}
+                            // value={form?.experienceDescription?.value}
+                            // onChangeText={(text) =>
+                            //     setForm({
+                            //         ...form,
+                            //         experienceDescription: {
+                            //             value: text,
+                            //             error: false,
+                            //             message: '',
+                            //         },
+                            //     })
+                            // }
                         />
-                    </>
-                )}
+                    {/* </>
+                )} */}
                 <Spacer height={scaleModerate(10)} />
                 <DateSelection
-                    title={'dob'}
-                    date={
-                        form.dob.value && moment(form.dob.value).isValid()
-                            ? moment(form.dob.value).toDate()
-                            : new Date()
-                    }
-                    onDateChange={handleDateChange}
-                    containerStyle={{ paddingVertical: scaleModerate(10) }}
+                    title={'Ngày sinh'}
+                    // date={
+                    //     form.dob.value && moment(form.dob.value).isValid()
+                    //         ? moment(form.dob.value).toDate()
+                    //         : new Date()
+                    // }
+                    // onDateChange={handleDateChange}
+                    // containerStyle={{ paddingVertical: scaleModerate(10) }}
                 />
                 <Spacer height={scaleModerate(10)} />
-                {authData?.type === 'lawyer' && (
+                {/* {authData?.type === 'lawyer' && ( */}
                     <View>
                         <Selection
-                            title={'field'}
-                            data={dataSelect}
-                            keyValue={form?.expertise?.value}
-                            onSelect={(item: any) =>
-                                setForm({
-                                    ...form,
-                                    expertise: { value: item?.key, error: false, message: '' },
-                                })
-                            }
+                            title={'Lĩnh vực môn học'}
+                            // data={dataSelect}
+                            // keyValue={form?.expertise?.value}
+                            // onSelect={(item: any) =>
+                            //     setForm({
+                            //         ...form,
+                            //         expertise: { value: item?.key, error: false, message: '' },
+                            //     })
+                            // }
                         />
                         <Spacer height={scaleModerate(16)} />
                     </View>
-                )}
+                {/* )} */}
 
                 <Selection
-                    title={'gender'}
+                    title={'Giới tính'}
                     data={gender}
-                    keyValue={form?.gender?.value}
-                    onSelect={(item: any) =>
-                        setForm({
-                            ...form,
-                            gender: { value: item?.key, error: false, message: '' },
-                        })
-                    }
+                    // keyValue={form?.gender?.value}
+                    // onSelect={(item: any) =>
+                    //     setForm({
+                    //         ...form,
+                    //         gender: { value: item?.key, error: false, message: '' },
+                    //     })
+                    // }
                 />
                 <Spacer height={16} />
                 <Selection
-                    title={'area'}
+                    title={'Khu vực'}
                     hasSearch
                     data={ADDRESS_DATA?.map((item: any) => {
                         return { key: item?.codename, name: item?.name }
                     })}
-                    keyValue={form?.area?.value}
-                    onSelect={(item: any) => {
-                        setForm({
-                            ...form,
-                            area: { value: item?.key, error: false, message: '' },
-                        })
-                    }}
+                    // keyValue={form?.area?.value}
+                    // onSelect={(item: any) => {
+                    //     setForm({
+                    //         ...form,
+                    //         area: { value: item?.key, error: false, message: '' },
+                    //     })
+                    // }}
                     pickerStyle={{ height: '80%' }}
                 />
                 <Spacer height={20} />
@@ -306,6 +307,7 @@ const PersonalInformationView = () => {
                     onPress={handleSave}
                 />
             </KeyboardAwareScrollView>
+            </ScrollView>
         </SafeAreaView>
     )
 }

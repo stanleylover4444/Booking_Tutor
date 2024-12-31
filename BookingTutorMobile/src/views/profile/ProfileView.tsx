@@ -22,6 +22,7 @@ import PhotoOptionsPicker from '../components/PhotoOptionsPicker'
 import GlobalModalController from '../components/GlobalModal/GlobalModalController'
 // import { GiftedAvatar } from 'react-native-gifted-chat'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import HeaderV2 from '../components/HeaderV2'
 
 
 const ProfileView = () => {
@@ -89,7 +90,7 @@ const ProfileView = () => {
 
     return (
         <SafeAreaView style={DefaultStyles.container} edges={['top']}>
-            <Header
+            {/* <Header
                 title={'profile'}
                 renderRight={() => (
                     <View
@@ -102,7 +103,9 @@ const ProfileView = () => {
                     
                     </View>
                 )}
-            />
+            /> */}
+
+<HeaderV2 title="Cài đặt" type="simple" />
 
             <ScrollView style={[DefaultStyles.wrapBody, { flex: 1 }]}>
                 <View style={{ alignItems: 'center' }}>
@@ -174,7 +177,7 @@ const ProfileView = () => {
                             <View style={[styles.iconRow, { backgroundColor: Colors.whiteE5 }]}>
                                 <FastImage source={ic_profile_circle} style={styles.icon} />
                             </View>
-                            <Text style={styles.text}>'personalInformation'</Text>
+                            <Text style={styles.text}>Thông tin tài khoản</Text>
                             <FastImage source={ic_chevron_right} style={styles.rightIcon} />
                         </TouchableOpacity>
                     {/* )} */}
@@ -187,7 +190,7 @@ const ProfileView = () => {
                         <View style={[styles.iconRow, { backgroundColor: Colors.whiteE5 }]}>
                             <FastImage source={ic_question_mark} style={styles.icon} />
                         </View>
-                        <Text style={styles.text}>'aboutUs'</Text>
+                        <Text style={styles.text}>Giới thiệu</Text>
                         <FastImage source={ic_chevron_right} style={styles.rightIcon} />
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -207,7 +210,7 @@ const ProfileView = () => {
                         <View style={[styles.iconRow, { backgroundColor: Colors.whiteE5 }]}>
                             <FastImage source={ic_alert_circle} style={styles.icon} />
                         </View>
-                        <Text style={styles.text}>'termsAndConditions'</Text>
+                        <Text style={styles.text}>Chính sách bảo mật</Text>
                         <FastImage source={ic_chevron_right} style={styles.rightIcon} />
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -227,7 +230,7 @@ const ProfileView = () => {
                         <View style={[styles.iconRow, { backgroundColor: Colors.whiteE5 }]}>
                             <FastImage source={ic_shield} style={styles.icon} />
                         </View>
-                        <Text style={styles.text}>'privacyPolicy'</Text>
+                        <Text style={styles.text}>Điều khoản sử dụng</Text>
                         <FastImage source={ic_chevron_right} style={styles.rightIcon} />
                     </TouchableOpacity>
 
@@ -236,7 +239,7 @@ const ProfileView = () => {
                             <View style={[styles.iconRow, { backgroundColor: Colors.whiteE5 }]}>
                                 <FastImage source={ic_close_circle} style={styles.icon} />
                             </View>
-                            <Text style={styles.text}>'deleteAccount'</Text>
+                            <Text style={styles.text}>Xóa tài khoản</Text>
                             <FastImage source={ic_chevron_right} style={styles.rightIcon} />
                         </TouchableOpacity>
                     {/* )} */}
@@ -249,7 +252,7 @@ const ProfileView = () => {
                                     style={{ height: scaleModerate(16), width: scaleModerate(16) }}
                                 />
                             </View>
-                            <Text style={styles.text}>'logOut'</Text>
+                            <Text style={styles.text}>Đăng xuất</Text>
                             <FastImage source={ic_chevron_right} style={styles.rightIcon} />
                         </TouchableOpacity>
                     {/* )} */}

@@ -8,6 +8,7 @@ import ChooseRoleView from '../views/auth/ChooseRoleView';
 import RegisterCustomerView from '../views/auth/RegisterCustomerView';
 import RegisterTutorView from '../views/auth/RegisterTutorView';
 import BottomTab from './BottomTab';
+import PersonalInformationView from '../views/profile/PersonalInformationView';
 
 const OutStack = createNativeStackNavigator();
 
@@ -25,6 +26,7 @@ const OutsideStack = () => {
         component={RegisterCustomerView}
       />
       <OutStack.Screen name="RegisterTutorView" component={RegisterTutorView} />
+      <OutStack.Screen name="PersonalInformationView" component={PersonalInformationView} />
     </OutStack.Navigator>
   );
 };

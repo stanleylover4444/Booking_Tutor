@@ -232,7 +232,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 >
                   <svg
                     className="fill-current"
-                    width="18"
+                    width="18" 
                     height="19"
                     viewBox="0 0 18 19"
                     fill="none"

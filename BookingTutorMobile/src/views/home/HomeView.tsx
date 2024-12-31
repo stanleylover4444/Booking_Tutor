@@ -136,7 +136,7 @@ const HomeView = () => {
                             paddingHorizontal: scaleModerate(25),
                         }}
                     >
-                        <Text style={styles.headerText}>appName</Text>
+                        <Text style={styles.headerText}>StayWME</Text>
                         <View style={{ flexDirection: 'row' }}>
                         
 
@@ -192,7 +192,7 @@ const HomeView = () => {
                                             { color: Colors.gray44 },
                                         ]}
                                     >
-                                        'hello'
+                                        Xin chào
                                     </Text>
                                     <Text
                                         style={[
@@ -235,7 +235,7 @@ const HomeView = () => {
                         <View style={styles.inputContainer}>
                             <TextInput
                                 style={styles.input}
-                                placeholder='askMe'
+                                placeholder='Hãy đặt câu hỏi cho chúng tôi !'
                                 placeholderTextColor={Colors.gray72}
                                 value={question} // Gán giá trị câu hỏi từ state
                                 onChangeText={(text) => setQuestion(text)}
@@ -276,7 +276,7 @@ const HomeView = () => {
                                 }}
                             >
                                 <FastImage style={styles.icon} source={ic_phone} />
-                                <Text style={styles.textSubIcon}>'callLawyer'</Text>
+                                <Text style={styles.textSubIcon}>Gọi gia sư</Text>
                             </TouchableOpacity>
                             <Spacer height={10} />
                             <TouchableOpacity
@@ -300,7 +300,7 @@ const HomeView = () => {
                                 style={styles.itemContainer}
                             >
                                 <FastImage style={styles.icon} source={ic_group} />
-                                <Text style={styles.textSubIcon}>'findLawyer'</Text>
+                                <Text style={styles.textSubIcon}>Tìm gia sư</Text>
                             </TouchableOpacity>
                             <Spacer height={10} />
 
@@ -312,7 +312,7 @@ const HomeView = () => {
                                     >
                                         <FastImage style={styles.icon} source={ic_calendar} />
                                         <Text style={styles.textSubIcon}>
-                                            'customerAppointment'
+                                           Lịch hẹn
                                         </Text>
                                     </TouchableOpacity>
                                 {/* </> */}
@@ -353,12 +353,12 @@ const HomeView = () => {
                                 }}
                             >
                                 <FastImage style={styles.icon} source={ic_seemore} />
-                                <Text style={styles.textSubIcon}>'viewAll'</Text>
+                                <Text style={styles.textSubIcon}>Tất cả</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
                     <Spacer height={10} />
-                    <Text style={{ ...DefaultStyles.textBold18Black }}>'newsletter'</Text>
+                    <Text style={{ ...DefaultStyles.textBold18Black }}></Text>
                     <Spacer height={5} />
                     {/* <FlatList
                         data={news}
@@ -369,7 +369,7 @@ const HomeView = () => {
                     /> */}
                     <Spacer height={20} />
                     <Text style={{ ...DefaultStyles.textBold18Black }}>
-                        'lawyerSuggestion'
+                        Gợi ý gia sư
                     </Text>
                     {/* <FlatList
                         data={userData?.staff?.slice(0, 10) || []}
@@ -381,15 +381,15 @@ const HomeView = () => {
                     <Spacer height={20} />
 
                     <Spacer height={20} />
-                    <Text style={{ ...DefaultStyles.textBold18Black }}>'quickAccess'</Text>
+                    <Text style={{ ...DefaultStyles.textBold18Black }}>Truy cập nhanh</Text>
                     <Spacer height={10} />
-                    {/* <FlatList
+                    <FlatList
                         data={QUICK_ASSETS_MODELS}
                         keyExtractor={(item) => item.id}
                         horizontal
                         showsHorizontalScrollIndicator={false}
                         renderItem={({ item }) => <ItemQuickAccess itemQuickAccess={item} />}
-                    /> */}
+                    />
                 </View>
                 <Spacer height={50} />
             </ScrollView>
@@ -405,7 +405,7 @@ const HomeView = () => {
             >
                 <FastImage style={{ height: 20, width: 20 }} source={ic_calendar_white} />
                 <Spacer width={10} />
-                <Text style={{ ...DefaultStyles.textRegular14White }}>'bookAppointment'</Text>
+                <Text style={{ ...DefaultStyles.textRegular14White }}>Đặt lịch ngay</Text>
             </TouchableOpacity>
         </View>
     )

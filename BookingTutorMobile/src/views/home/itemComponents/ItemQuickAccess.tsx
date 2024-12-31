@@ -2,12 +2,10 @@ import React from 'react'
 import { scaleModerate } from '../../../styles/scaleDimensions'
 import { View, Text, Image, StyleSheet, TouchableOpacity, Linking } from 'react-native'
 import { DefaultStyles } from '../../../styles/DefaultStyles'
-import { useTranslation } from 'react-i18next'
 import { Colors } from '../../../styles/Colors'
 import FastImage from 'react-native-fast-image'
 
 const ItemQuickAccess = ({ itemQuickAccess }: any) => {
-    const { t, i18n } = useTranslation()
     return (
         <View style={{ alignItems: 'center' }}>
             <TouchableOpacity
@@ -40,6 +38,7 @@ const styles = StyleSheet.create({
     image: {
         width: scaleModerate(32),
         height: scaleModerate(32),
+        backgroundColor : "red"
     },
     text: {
         ...DefaultStyles.textRegular12Gray,

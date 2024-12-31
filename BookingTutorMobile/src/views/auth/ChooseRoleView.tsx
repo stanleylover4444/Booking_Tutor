@@ -44,6 +44,19 @@ const ChooseRoleView = () => {
             onPress={handlePressSignUpRoleCustomer}
           />
 
+<Spacer height={20} />
+          <Button
+            isColor
+            title={'Doanh nghiệp'}
+            onPress={handlePressSignUpRoleCustomer}
+          />
+
+<Spacer height={20} />
+          <Button
+            isColor
+            title={'Phụ huynh'}
+            onPress={handlePressSignUpRoleCustomer}
+          />
           <Spacer height={20} />
           <Button
             isColor
