@@ -12,6 +12,8 @@ const authUserRoutes = express.Router();
  * /auth/userRegister:
  *   post:
  *     summary: Register a new user
+ *     tags:
+ *       - Auth 
  *     requestBody:
  *       required: true
  *       content:
@@ -48,6 +50,8 @@ authUserRoutes.post("/userRegister", userRegisterValidator, userRegister);
  * /auth/userLogin:
  *   post:
  *     summary: Login a user
+ *     tags:
+ *       - Auth
  *     requestBody:
  *       required: true
  *       content:

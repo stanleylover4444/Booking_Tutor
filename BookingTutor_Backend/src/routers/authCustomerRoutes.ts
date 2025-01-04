@@ -15,6 +15,8 @@ const authCustomerRoutes = express.Router();
  * /auth/customerRegister:
  *   post:
  *     summary: Register a new customer
+ *     tags:
+ *       - Auth
  *     requestBody:
  *       required: true
  *       content:
@@ -55,6 +57,8 @@ authCustomerRoutes.post(
  * /auth/customerLogin:
  *   post:
  *     summary: Login a customer
+ *     tags:
+ *       - Auth
  *     requestBody:
  *       required: true
  *       content:
