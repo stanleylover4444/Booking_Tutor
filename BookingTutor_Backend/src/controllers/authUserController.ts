@@ -5,13 +5,15 @@ import { error } from "console";
 import { validationResult } from "express-validator";
 import { Request, Response } from "express";
 
-const register = async (req: Request, res: Response) => {
+const userRegister = async (req: Request, res: Response) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.status(400).json({ errors: errors.array() });
     }
-    const { username, email, password } = req.body;
+
+    const { username, fullName, phoneNumber, email, password } = req.body;
+
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       res.status(400).json({
@@ -19,7 +21,13 @@ const register = async (req: Request, res: Response) => {
       });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({ username, email, password: hashedPassword });
+    const newUser = new User({
+      username,
+      fullName,
+      phoneNumber,
+      email,
+      password: hashedPassword,
+    });
     await newUser.save();
 
     res.status(201).json({
@@ -33,7 +41,7 @@ const register = async (req: Request, res: Response) => {
   }
 };
 
-const login = async (req: Request, res: Response) => {
+const userLogin = async (req: Request, res: Response) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -70,4 +78,4 @@ const login = async (req: Request, res: Response) => {
   }
 };
 
-export { register, login };
+export { userRegister, userLogin };

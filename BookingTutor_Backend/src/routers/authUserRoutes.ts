@@ -1,12 +1,15 @@
 import express from "express";
-import { login, register } from "../controllers/authController";
-import { loginValidator, registerValidator } from "../validators/authValidator";
+import { userRegister, userLogin } from "../controllers/authUserController";
+import {
+  userLoginValidator,
+  userRegisterValidator,
+} from "../validators/authUserValidator";
 
-const authRoutes = express.Router();
+const authUserRoutes = express.Router();
 
 /**
  * @swagger
- * /auth/register:
+ * /auth/userRegister:
  *   post:
  *     summary: Register a new user
  *     requestBody:
@@ -18,6 +21,10 @@ const authRoutes = express.Router();
  *             properties:
  *               username:
  *                 type: string
+ *               fullName:
+ *                 type: string
+ *               phoneNumber:
+ *                 type: string
  *               email:
  *                 type: string
  *               password:
@@ -26,17 +33,19 @@ const authRoutes = express.Router();
  *               - username
  *               - email
  *               - password
+ *               - phoneNumber
+ *               - fullName
  *     responses:
  *       200:
  *         description: User registered successfully
  *       400:
  *         description: Validation error
  */
-authRoutes.post("/register", registerValidator, register);
+authUserRoutes.post("/userRegister", userRegisterValidator, userRegister);
 
 /**
  * @swagger
- * /auth/login:
+ * /auth/userLogin:
  *   post:
  *     summary: Login a user
  *     requestBody:
@@ -46,12 +55,12 @@ authRoutes.post("/register", registerValidator, register);
  *           schema:
  *             type: object
  *             properties:
- *               email:
+ *               username:
  *                 type: string
  *               password:
  *                 type: string
  *             required:
- *               - email
+ *               - username
  *               - password
  *     responses:
  *       200:
@@ -59,6 +68,6 @@ authRoutes.post("/register", registerValidator, register);
  *       401:
  *         description: Invalid credentials
  */
-authRoutes.post("/login", loginValidator, login);
+authUserRoutes.post("/userLogin", userLoginValidator, userLogin);
 
-export default authRoutes;
+export default authUserRoutes;

@@ -1,12 +1,12 @@
 import { User } from "../models/userModel";
 import { Request, Response } from "express";
 
-const getUsers = async (req: Request, res: Response) => {
+const getCustomers = async (req: Request, res: Response) => {
   try {
-    const users = await User.find().select("-password");
+    const customer = await User.find().select("-password");
     res.status(200).json({
-      message: "Lấy danh sách người dùng thành công",
-      data: users,
+      message: "Lấy danh sách khách hàng thành công",
+      data: customer,
     });
   } catch (error) {
     res.status(500).json({
@@ -15,9 +15,9 @@ const getUsers = async (req: Request, res: Response) => {
   }
 };
 
-const updateUser = async (req: Request, res: Response) => {
+const updateCustomer = async (req: Request, res: Response) => {
   try {
-    const { userId } = req.params;
+    const { customerId } = req.params;
     const { username, email } = req.body;
     const avatarFile = req.file;
 
@@ -27,18 +27,18 @@ const updateUser = async (req: Request, res: Response) => {
       updateData.avatar = `/uploads/${avatarFile.filename}`;
     }
 
-    const updatedUser = await User.findByIdAndUpdate(userId, updateData, {
+    const updatedCustomer = await User.findByIdAndUpdate(customerId, updateData, {
       new: true,
     });
 
-    if (!updatedUser) {
+    if (!updatedCustomer) {
       res.status(404).json({ message: "User not found" });
       return;
     }
 
     res.status(200).json({
       message: "User updated successfully",
-      data: updatedUser,
+      data: updatedCustomer,
     });
   } catch (error) {
     res.status(500).json({
@@ -48,4 +48,4 @@ const updateUser = async (req: Request, res: Response) => {
   }
 };
 
-export { getUsers, updateUser };
+export { getCustomers, updateCustomer };

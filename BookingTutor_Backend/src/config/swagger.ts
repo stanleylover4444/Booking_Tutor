@@ -1,11 +1,7 @@
 import swaggerJsdoc from "swagger-jsdoc";
 import dotenv from "dotenv";
 
-import authRoutes from "../routers/authRoutes"
-
-
 dotenv.config();
-
 
 const options = {
   definition: {
@@ -22,8 +18,6 @@ const options = {
       },
     ],
   },
-//   apis: ["../routers/*.ts"], 
-
 apis: ["./src/routers/*.ts"],
 
 

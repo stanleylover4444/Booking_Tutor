@@ -1,21 +1,18 @@
 import mongoose, { Document, Schema } from "mongoose";
-interface IUser extends Document {
+interface ICustomers extends Document {
   username: string;
   fullName: string;
   phoneNumber: string;
+  typeCustomer: String;
   email: string;
-  yearOfExperience?: number;
-  dob?: Date;
-  education?: string;
   password: string;
+  dob?: Date;
   avatar?: string;
   active: boolean;
-  address?: string;
   balance?: string;
-  subjects: string[];
 }
 
-const userSchema: Schema = new Schema(
+const customerSchema: Schema = new Schema(
   {
     username: {
       type: String,
@@ -35,14 +32,8 @@ const userSchema: Schema = new Schema(
       type: String,
       unique: true,
     },
-    yearOfExperience: {
-      type: Number,
-    },
     dob: {
       type: Date,
-    },
-    education: {
-      type: String,
     },
     password: {
       type: String,
@@ -56,18 +47,15 @@ const userSchema: Schema = new Schema(
       type: Boolean,
       default: true,
     },
-    address: {
-      type: String,
-    },
     balance: {
       type: String,
     },
-    subjects: {
-      type: [String],
-      default: [],
+    typeCustomer: {
+      type: String,
+      required: true,
     },
   },
-  { timestamps: true, collection: "users", strict: false }
+  { timestamps: true, collection: "customers", strict: false }
 );
 
-export const User = mongoose.model<IUser>("User", userSchema);
+export const Customer = mongoose.model<ICustomers>("Customer", customerSchema);
